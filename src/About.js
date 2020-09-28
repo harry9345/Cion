@@ -1,10 +1,9 @@
-import React from 'react';
-import Search from './components/Search';
-
+import React from "react";
+import Search from "./components/Search";
 
 export const About = () => (
-   <div>
-        <p>about page</p>
-        <Search />
-   </div>
-)
+  <div>
+    <p>about page</p>
+    <Search />
+  </div>
+);

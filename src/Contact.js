@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 export const Contact = () => (
-    <div>
-        <p>CryptoCurrency contact</p>
-        <p>lorem5</p>
-    </div>
-)
+  <div>
+    <p>CryptoCurrency contact</p>
+    <p>lorem5</p>
+  </div>
+);
