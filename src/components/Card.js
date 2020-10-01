@@ -1,21 +1,15 @@
 import React from "react";
-import PopUp from "./PopUp";
+import Modal from "reacct-modal";
 
-export default class Card extends React.Component {
-  state = {
-    seen: false,
-  };
-  togglePop = () => {
-    this.setState({
-      seen: !this.state.seen,
-    });
-  };
-  render() {
-    return (
-      <div>
-        <div onClick={this.togglePop}></div>
-        {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
-      </div>
-    );
-  }
-}
+const Card = (props) => {
+  <Modal
+    isOpen={!!props.selectedOption}
+    contentLabel="Selected Coin"
+    onRequestClose={props.handleClearSelectedOption}
+  >
+    <h3>Selected Coin</h3>
+    {props.selectedOption && <p>{props.selectedOption}</p>}
+    <button onClick={props.handleClearSelectedOption}>Okay</button>
+  </Modal>;
+};
+export default Card;
