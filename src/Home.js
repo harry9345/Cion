@@ -21,11 +21,13 @@ const Styles = styled.div`
   }
 `;
 
-export default class Home extends React.Component {
-  state = {
-    selectedOption: undefined,
-  };
-
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption: undefined,
+    };
+  }
   handleClearSelectedOption = () => {
     this.setState(() => ({ selectedOption: undefined }));
   };
@@ -141,3 +143,5 @@ export default class Home extends React.Component {
     );
   }
 }
+
+export default Home;
