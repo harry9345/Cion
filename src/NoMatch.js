@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 export const NoMatch = () => (
-    <div>
+  <div>
     <p>CryptoCurrency Market</p>
     <p>lorem5</p>
-    </div>
-)
+  </div>
+);
