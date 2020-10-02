@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Table from "react-bootstrap/Table";
-import Card from "./components/Card";
-
+const DATA = [
+  {
+    name: "Bitcoin",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Ethereum",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Steller",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "EOS",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Chainlik",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Monero",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Tron",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+  {
+    name: "Theta",
+    pair: "BTC/USDT",
+    symbol: "Bitcoin",
+    market_cap: 123456.12,
+    avarage_last_price: 123 - 45,
+  },
+];
 const Styles = styled.div`
   .jumbo {
     background-color: #fff;
@@ -20,128 +76,48 @@ const Styles = styled.div`
     margin-left: 500px;
   }
 `;
-
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedOption: undefined,
-    };
-  }
-  handleClearSelectedOption = () => {
-    this.setState(() => ({ selectedOption: undefined }));
-  };
-  render() {
-    return (
-      <Styles>
-        <div className="jumbo">
-          <p>Our Market</p>
-          <Table responsive bordered hover>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Pair</th>
-                <th>Symbol</th>
-                <th>Market Cup</th>
-                <th>Avarage Last Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <Card
-                    selectedOption={this.state.selectedOption}
-                    handleClearSelectedOption={this.handleClearSelectedOption}
-                  />
-                </td>
-                <td>BTC/USDT</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Ethereum
-                  </a>
-                </td>
-                <td>BTC/USD</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Stellar
-                  </a>
-                </td>
-                <td>BTC/USD</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    EOS
-                  </a>
-                </td>
-                <td>BTC/USDT</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Chainlink
-                  </a>
-                </td>
-                <td>BTC/BNB</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Monero
-                  </a>
-                </td>
-                <td>BTC/USD</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Tron
-                  </a>
-                </td>
-                <td>BTC/USD</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href={"https://www.facebook.com/"} className="link">
-                    Theta
-                  </a>
-                </td>
-                <td>BTC/USDT</td>
-                <td>Bitcoin</td>
-                <td>$ 172.722.342</td>
-                <td>$ 8722727.5</td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-      </Styles>
+const Home = () => {
+  const [rows, setRows] = useState(DATA);
+  const handelSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    const filteredData = DATA.filter((item) =>
+      item.name.toLowerCase().includes(query)
     );
-  }
-}
+    setRows(filteredData);
+  };
+
+  return (
+    <Styles>
+      <div className="jumbo">
+        <p>Our Market</p>
+        <input onChange={handelSearch} />
+        <Table responsive bordered hover>
+          <thead>
+            <th>Name</th>
+            <th>Pair</th>
+            <th>Symbol</th>
+            <th>Market cup</th>
+            <th>avarage Last Price</th>
+          </thead>
+          <tbody>
+            {rows.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  <a href="http://google.com" className="link">
+                    {item.name}
+                  </a>
+                </td>
+                <td>{item.pair}</td>
+                <td>{item.symbol}</td>
+                <td>{item.market_cap}</td>
+                <td>{item.avarage_last_price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </Styles>
+  );
+};
 
 export default Home;
